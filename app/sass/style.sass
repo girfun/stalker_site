@@ -21,8 +21,11 @@ body
   text-transform: uppercase
   display: inline-block
   box-sizing: border-box
-  +xl(padding, 0px 20px)
-  +md(font-size, 20px)
+  +xl-block()
+    font-size: 20px
+    padding: 0px 20px
+  +md(font-size, 16px)
+  +md(line-height, 300%)
   +sm(font-size, 13px)
   span
     margin-right: 25px
@@ -55,7 +58,10 @@ body
   &__links li:last-child
     background: $yellow
     margin-right: -2px
-    padding-left: 10px
+    padding-left: 30px
+    +xl(padding-left, 18px)
+    a
+      color: #000
     +md(background, $blue)
   &__link
     text-decoration: none
@@ -68,9 +74,9 @@ body
     padding-bottom: 40px
     //padding: 52px 50px 46px
     +xxl-block
-      font-size: 16px
+      font-size: 22px
     +xl-block
-      font-size: 14px
+      font-size: 15px
 
   span
     margin-right: 28px
@@ -116,9 +122,11 @@ body
   padding-top: 48px
   padding-bottom: 75px
   border-bottom: 30px solid $gray
-  +md(border-bottom, none)
+  +md-block()
+    padding-bottom: 35px
+    border-bottom: none
   +xs-block()
-    padding: 10px 0px
+    padding: 17px 0px 10px
   &__title
     margin-bottom: 20px
     opacity: .6
@@ -132,11 +140,14 @@ body
     +xl(font-size, 18px)
   &__blocks
     +row-flex()
-    +md(margin-right, 0px)
+    +md-block()
+      justify-content: space-between
+      margin-right: 0px
 
   &__block
-    +size-md(10)
+    +size-md(9)
     +size-xs(20)
+
     +xs(margin-bottom, 20px)
 
   &__logo
@@ -148,7 +159,10 @@ body
     +shift-md-right(0)
   &__logo-wrap
     margin-left: 42px
-
+  .logo
+    +md(max-width, 90px)
+  .logo__text
+    +md(max-width, 120px)
   &__address
     display: flex
     align-items: center
@@ -165,6 +179,9 @@ body
     +col()
     +size(4)
     +md(margin-top, 25px)
+    +md-block()
+      margin-top: 25px
+      order: 1
   &__tel-wrap
     margin-left: 25px
 
@@ -187,6 +204,9 @@ body
     align-items: center
     +col()
     +size(4)
+    +md(margin-top, 25px)
+    +xs-block()
+      order: 1
     display: flex
     justify-content: space-around
     align-items: center
@@ -196,6 +216,12 @@ body
     +xl-block()
       width: 90px
       height: 60px
+    +md-block()
+      width: 75px
+      height: 55px
+    +xs-block()
+      width: 60px
+      height: 50px
   &__links a:nth-child(1)
     background: url("../img/link_vk.png") no-repeat center center, $gray
   &__links a:nth-child(2)
@@ -213,11 +239,17 @@ body
   background: url("../img/main_bg.png") no-repeat
   background-size: cover
   position: relative
+  padding-bottom: 10px
+  +xs(padding-bottom, 0px)
   .wrapper
     z-index: 5
   &__blocks
     +row-flex()
-    +md(margin-right, 0px)
+    +md(margin-right, -5px)
+    +xs-block()
+      background-color: rgba(255,255,255,0.1)
+      backdrop-filter: blur(1px)
+      text-align: center
   &__block1
     +col()
     +size(8)
@@ -232,13 +264,16 @@ body
         font-family: 'GilroyEB'
       +xxl(font-size, 55px)
       +md(font-size, 40px)
-      +xs(margin-top, 40px)
+      +xs-block()
+        text-shadow: 1px 1px 2px #000
+        margin-top: 40px
     p
       font-size: 50px
       margin-top: 74px
       margin-bottom: 100px
       +xl(font-size, 40px)
       +md(font-size, 28px)
+      +xs(text-shadow, 1px 1px 2px #000)
   &__block2
     +col()
     +size(7)
@@ -347,20 +382,22 @@ body
   &__blocks
     +row-flex()
     +md(margin-right, 0px)
-    +xs(margin-left, 25px)
+    +xs(margin-left, 10px)
   &__block
     +col()
     +size(5)
     +size-md(10)
     +size-xs(20)
-    background: linear-gradient(to left, $gray 50%, #fff 50%)
+    background: linear-gradient(to left, $gray 30%, #fff 70%)
     word-wrap: normal
     padding: 90px 60px
     +xl(padding, 48px 18px)
     +md-block()
       margin-top: 30px
       margin-bottom: 30px
-
+    +xs-block()
+      background: #fff
+      text-align: center
   &__title
     color: $blue
     font-size: 120px
@@ -427,27 +464,62 @@ body
     +row-flex()
     +md(margin-right, 0px)
 
+    & .footer__block:nth-child(-n+3)
+      +md-block()
+        flex-direction: row
+        align-items: center
+        +size(17)
+        +shift-left(3)
+      +size-sm(19.5)
+      +shift-sm-left(0.5)
+      +xs-block()
+        flex-direction: column
+
+
+
+
   &__block
     +col()
     +size(5)
     +size-md(20)
+    +size-xs(20)
+    //+shift-md-left(3)
+
     +md-block()
       display: flex
       flex-direction: column
       margin-top: 40px
+      &:nth-child(-n+3)
+        +row-flex()
+
+
   &__title
     font-size: 60px
     color: rgba(#fff, .4)
     +xxl(font-size, 48px)
     +xl(font-size, 30px)
     +md(font-size, 20px)
+    +md-block()
+      +col()
+      +size(5)
+    +xs-block()
+      +col()
+      +size(20)
+      margin-bottom: 10px
+
   &__item-wrap
     display: flex
-    align-items: center
+    align-items: flex-start
     margin-top: 73px
     +md(margin-top, 0px)
     img
       margin-right: 20px
+    +md-block()
+      +col()
+      +size(15)
+    +xs-block()
+      +col()
+      +size(20)
   &__text
     font-size: 34px
     margin-bottom: 23px
@@ -460,6 +532,9 @@ body
     color: rgba(#fff, .4)
     margin-top: 23px
     +xl(font-size, 19px)
+
+  &__links .footer__title
+    +md(display, none)
   &__link
     display: flex
     align-items: center
